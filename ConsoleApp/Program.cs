@@ -1,4 +1,5 @@
-﻿using ConsoleApp.Services;
+﻿using ConsoleApp.Options;
+using ConsoleApp.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -9,22 +10,24 @@ namespace ConsoleApp
     {
         static void Main(string[] args)
         {
-            //Console.WriteLine("Hello World!");
             try
             {
-                var sp = new ServiceCollection()
-                    .AddScoped<ITestService, SignInManager>()
-                    .AddSingleton<IConfiguration>(sp =>
-                    {
-                        var config = new ConfigurationBuilder()
+                // 配置器
+                IConfiguration config = new ConfigurationBuilder()
                         .AddJsonFile("appsettings.json", false, true)
                         .Build();
-                        return config;
-                    })
+
+                var sp = new ServiceCollection()
+                    .AddScoped<ITestService, SignInManager>()
+                    .AddSingleton<IConfiguration>(sp => config)
+                    .Configure<MySettings>(config.GetSection("MySettings"))
                     .BuildServiceProvider();    // 创建服务容器
 
+
+                config = sp.GetRequiredService<IConfiguration>();
+
+                #region 关于服务注册的使用
                 var userSer = sp.GetRequiredService<ITestService>();
-                var config = sp.GetRequiredService<IConfiguration>();
                 var section = config.GetSection("ApplicationName");
                 var applicationName = section.Value;
                 Console.WriteLine($"App名称为：{applicationName}");
@@ -42,7 +45,7 @@ namespace ConsoleApp
                 var u1 = userSer.Signin("jim", "134");
                 var u2 = userSer.Signin("jim", "123");
 
-
+                #endregion
             }
             catch (Exception ex)
             {
