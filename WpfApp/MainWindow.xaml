@@ -7,6 +7,10 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-
+        <StackPanel>
+            <Button x:Name="BtnGetData" Content="获取数据" Click="BtnGetData_Click"/>
+            <Label Content="数据展示：" />
+            <TextBox x:Name="TbxDisplayData" />
+        </StackPanel>
     </Grid>
 </Window>

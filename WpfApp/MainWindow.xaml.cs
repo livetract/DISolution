@@ -1,17 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows;
+using WpfApp.Services;
 
 namespace WpfApp
 {
@@ -20,9 +8,17 @@ namespace WpfApp
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        private readonly ISampleService sampleService;
+
+        public MainWindow(ISampleService sampleService)
         {
             InitializeComponent();
+            this.sampleService = sampleService;
+        }
+
+        private void BtnGetData_Click(object sender, RoutedEventArgs e)
+        {
+            TbxDisplayData.Text = sampleService.GetData();
         }
     }
 }
