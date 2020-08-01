@@ -10,24 +10,32 @@ namespace WpfApp
 {
     public partial class App : Application
     {
-        public IServiceProvider ServiceProvider { get; private set; }
-        public IConfiguration Configuration { get; private set; }
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+            Initializer();
+            base.OnStartup(e);
+        }
 
-            Configuration = builder.Build();
+
+
+        public IServiceProvider ServiceProvider { get; private set; }
+        public IConfiguration Configuration { get; private set; }
+        private void Initializer()
+        {
+            Configuration = new ConfigurationBuilder()
+                            .SetBasePath(Directory.GetCurrentDirectory())
+                            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                            .Build();
 
             var serviceCollection = new ServiceCollection();
+
             ConfigureServices(serviceCollection);
 
             ServiceProvider = serviceCollection.BuildServiceProvider();
 
-            var mainWindow = ServiceProvider.GetRequiredService<MainWindow>();
-            mainWindow.Show();
+            ServiceProvider.GetRequiredService<MainWindow>()
+                .Show();
         }
 
         private void ConfigureServices(IServiceCollection services)
