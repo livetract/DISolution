@@ -1,4 +1,6 @@
-﻿using System.Net.Http;
+﻿using System.Net;
+using System.Net.Http;
+using System.Threading;
 using System.Windows;
 using WpfApp.Services;
 
@@ -23,13 +25,14 @@ namespace WpfApp
         private void BtnGetData_Click(object sender, RoutedEventArgs e)
         {
             var client = httpClientFactory.CreateClient();
+            var url = "https://localhost:9011/api/todo";
             HttpRequestMessage request;
             HttpResponseMessage response;
             try
             {
-                request = new HttpRequestMessage(HttpMethod.Get, "https://www.baid45545u.com");
+                request = new HttpRequestMessage(HttpMethod.Get, url);
                 response = (client.SendAsync(request)).Result;
-                response.EnsureSuccessStatusCode();
+                //response.EnsureSuccessStatusCode();
                 var status = response.StatusCode;
                 if (response.IsSuccessStatusCode)
                 {
@@ -37,7 +40,24 @@ namespace WpfApp
                 }
                 else
                 {
-                    TbxDisplayData.Text = "zhaobudao";
+                    switch (response.StatusCode)
+                    {
+                        case HttpStatusCode.NotFound:
+                            TbxDisplayData.Text = "找不到资源";
+                            break;
+
+                        case HttpStatusCode.BadRequest:
+                            TbxDisplayData.Text = "错误的请求";
+                            break;
+                        case HttpStatusCode.InternalServerError:
+                            TbxDisplayData.Text = "服务器故障";
+                            break;
+                        case HttpStatusCode.Unauthorized:
+                            TbxDisplayData.Text = "未认证";
+                            break;
+                    }
+
+                    //TbxDisplayData.Text = "zhaobudao";
                 }
             }
             catch (System.Exception ex)
