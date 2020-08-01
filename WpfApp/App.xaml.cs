@@ -43,6 +43,10 @@ namespace WpfApp
             services.Configure<AppSettings>(Configuration.GetSection(nameof(AppSettings)));
             services.AddScoped<ISampleService, SampleService>();
             services.AddTransient(typeof(MainWindow));
+
+            services.AddHttpClient();
+
+
         }
     }
 }
