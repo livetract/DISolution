@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using System.Net.Http;
 using System.Threading;
 using System.Windows;
@@ -32,7 +33,7 @@ namespace WpfApp
             {
                 request = new HttpRequestMessage(HttpMethod.Get, url);
                 response = (client.SendAsync(request)).Result;
-                //response.EnsureSuccessStatusCode();
+                response.EnsureSuccessStatusCode();
                 var status = response.StatusCode;
                 if (response.IsSuccessStatusCode)
                 {
@@ -56,15 +57,16 @@ namespace WpfApp
                             TbxDisplayData.Text = "未认证";
                             break;
                     }
-
-                    //TbxDisplayData.Text = "zhaobudao";
                 }
+            }
+            // 由于目标计算机积极拒绝，无法连接。
+            catch (AggregateException ae)
+            {
+                TbxDisplayData.Text = $"错误信息是：\n\t{ae.Message}";
             }
             catch (System.Exception ex)
             {
-
                 TbxDisplayData.Text += $"\n\t错误信息Exception:{ex}\n";
-                //throw;
             }
             
             TbxDisplayData.Text += sampleService.GetData();
