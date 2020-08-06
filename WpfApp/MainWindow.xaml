@@ -33,9 +33,12 @@
         </ItemsControl>
         
         <!-- 定义内容区 -->
-        <ContentControl Grid.Column="1" Content="{Binding Page}" />
-
+        <!--<ContentControl Grid.Column="1" Content="{Binding Page}" />-->
+        
         <StackPanel Grid.Column="1">
+
+            <TextBlock Text="{Binding Name}" Height="50" Background="CadetBlue"/>
+
             <Button x:Name="BtnGetData" Content="获取数据" Click="BtnGetData_ClickAsync"/>
             <Label Content="数据展示：" />
             <TextBox x:Name="TbxDisplayData" />
