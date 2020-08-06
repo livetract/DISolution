@@ -46,27 +46,25 @@ namespace WpfApp.ViewModel
 
         public void OpenPage(string name)
         {
-            this.Name = name;
-            //switch (name)
-            //{
-            //    case "文档":
-            //        Page = new Document();
-            //        break;
-            //    case "音乐":
-            //        Page = new Music();
-            //        break;
-            //    case "视频":
-            //        Page = new Video();
-            //        break;
-            //    case "照片":
-            //        Page = new Photo();
-            //        break;
-            //    case "收藏":
-            //        Page = new Favorite();
-            //        break;
-            //    default:
-            //        break;
-            //}
+            //this.Name = name;
+            switch (name)
+            {
+                case "文档":
+                    Page = new Document();
+                    break;
+                case "音乐":
+                    Page = new Music();
+                    break;
+                case "视频":
+                    Page = new Video();
+                    break;
+                case "照片":
+                    Page = new Photo();
+                    break;
+                case "收藏":
+                    Page = new Favorite();
+                    break;
+            }
         }
     }
 }

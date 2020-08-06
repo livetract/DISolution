@@ -7,22 +7,39 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Views\Document.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Favorite.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Music.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Photo.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Video.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Views\Document.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Views\Favorite.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Music.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\Photo.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\Video.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Views\Music.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Views\Document.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

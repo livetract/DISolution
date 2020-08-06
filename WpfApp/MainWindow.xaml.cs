@@ -29,44 +29,44 @@ namespace WpfApp
             this.httpClientFactory = httpClientFactory;
         }
 
-        private async void BtnGetData_ClickAsync(object sender, RoutedEventArgs e)
-        {
-            var client = httpClientFactory.CreateClient();
-            var url = "https://localhost:9011/api/todo";
-            HttpResponseMessage response = new HttpResponseMessage() ;
-            try
-            {
-                var request = new HttpRequestMessage(HttpMethod.Get, url);
-                response = await client.SendAsync(request);
-                response.EnsureSuccessStatusCode();
-            }
-            // 由于目标计算机积极拒绝，无法连接。
-            catch(HttpRequestException hre)
-            {
-                TbxDisplayData.Text = $"错误信息是：\n\t{hre.Message}\n\t\t错误信息来自: HttpRequestException\n";
-                switch (response.StatusCode)
-                {
-                    case HttpStatusCode.NotFound:
-                        TbxDisplayData.Text += "错误信息是：\n\t找不到资源\n";
-                        break;
+        //private async void BtnGetData_ClickAsync(object sender, RoutedEventArgs e)
+        //{
+        //    var client = httpClientFactory.CreateClient();
+        //    var url = "https://localhost:9011/api/todo";
+        //    HttpResponseMessage response = new HttpResponseMessage() ;
+        //    try
+        //    {
+        //        var request = new HttpRequestMessage(HttpMethod.Get, url);
+        //        response = await client.SendAsync(request);
+        //        response.EnsureSuccessStatusCode();
+        //    }
+        //    // 由于目标计算机积极拒绝，无法连接。
+        //    catch(HttpRequestException hre)
+        //    {
+        //        TbxDisplayData.Text = $"错误信息是：\n\t{hre.Message}\n\t\t错误信息来自: HttpRequestException\n";
+        //        switch (response.StatusCode)
+        //        {
+        //            case HttpStatusCode.NotFound:
+        //                TbxDisplayData.Text += "错误信息是：\n\t找不到资源\n";
+        //                break;
 
-                    case HttpStatusCode.BadRequest:
-                        TbxDisplayData.Text += "错误信息是：\n\t错误的请求\n";
-                        break;
-                    case HttpStatusCode.InternalServerError:
-                        TbxDisplayData.Text += "错误信息是：\n\t服务器故障\n";
-                        break;
-                    case HttpStatusCode.Unauthorized:
-                        TbxDisplayData.Text += "错误信息是：\n\t未认证\n";
-                        break;
-                }
-            }
-            catch (Exception ex)
-            {
-                TbxDisplayData.Text += $"\n\t错误信息Exception:{ex}\n";
-            }
+        //            case HttpStatusCode.BadRequest:
+        //                TbxDisplayData.Text += "错误信息是：\n\t错误的请求\n";
+        //                break;
+        //            case HttpStatusCode.InternalServerError:
+        //                TbxDisplayData.Text += "错误信息是：\n\t服务器故障\n";
+        //                break;
+        //            case HttpStatusCode.Unauthorized:
+        //                TbxDisplayData.Text += "错误信息是：\n\t未认证\n";
+        //                break;
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        TbxDisplayData.Text += $"\n\t错误信息Exception:{ex}\n";
+        //    }
             
-            TbxDisplayData.Text += $"数据信息：\n\t{sampleService.GetData()}\n";
-        }
+        //    TbxDisplayData.Text += $"数据信息：\n\t{sampleService.GetData()}\n";
+        //}
     }
 }
