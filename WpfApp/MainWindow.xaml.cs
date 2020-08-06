@@ -5,6 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using WpfApp.Services;
+using WpfApp.ViewModel;
 
 namespace WpfApp
 {
@@ -20,6 +21,10 @@ namespace WpfApp
             , IHttpClientFactory httpClientFactory)
         {
             InitializeComponent();
+
+            // 绑定到上下文
+            this.DataContext = new MainViewModel();
+
             this.sampleService = sampleService;
             this.httpClientFactory = httpClientFactory;
         }

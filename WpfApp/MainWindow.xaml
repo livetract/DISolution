@@ -13,6 +13,24 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
+        <!-- 左侧列表，并绑定到对象上 -->
+        <ItemsControl ItemsSource="{Binding Modules}">
+            
+            <!-- 配置模板为stackpanel -->
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel></StackPanel>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            
+            <!-- 绑定显示 -->
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Button Content="{Binding Name}"/>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        
 
         <StackPanel Grid.Column="1">
             <Button x:Name="BtnGetData" Content="获取数据" Click="BtnGetData_ClickAsync"/>
