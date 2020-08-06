@@ -26,11 +26,14 @@
             <!-- 绑定显示 -->
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Button Content="{Binding Name}"/>
+                    <Button CommandParameter="{Binding Name}" Content="{Binding Name}"
+                            Command="{ Binding RelativeSource={RelativeSource AncestorType=local:MainWindow },Path=DataContext.OpenCommand }" />
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
         
+        <!-- 定义内容区 -->
+        <ContentControl Grid.Column="1" Content="{Binding Page}" />
 
         <StackPanel Grid.Column="1">
             <Button x:Name="BtnGetData" Content="获取数据" Click="BtnGetData_ClickAsync"/>
