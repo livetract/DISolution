@@ -7,6 +7,11 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Background="AliceBlue">
-        <TextBlock Text="文档界面" HorizontalAlignment="Center" VerticalAlignment="Center" Height="50" Width="200" FontSize="40" />
+        
+        <StackPanel>
+            <TextBlock Text="文档界面" Height="50" Width="200" FontSize="40" Margin="5,10,5,5" HorizontalAlignment="Center" TextAlignment="Center" />
+            <TextBox x:Name="DisplayAssemblyInfo" Height="200" Background="LightGray" Margin="5" />
+            <Button x:Name="GetAssembly" Click="GetAssembly_Click" Content="GetAssembly" Margin="5" />
+        </StackPanel>
     </Grid>
 </UserControl>
