@@ -64,7 +64,9 @@ namespace WpfApp.ViewModel
                 case "收藏":
                     Page = new Favorite();
                     break;
+
             }
+
         }
     }
 }
