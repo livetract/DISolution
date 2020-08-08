@@ -1,5 +1,6 @@
-﻿using System.Collections.Generic;
-using WpfApp.Views;
+﻿using System;
+using System.Collections.Generic;
+using System.Windows.Controls;
 
 namespace WpfApp.ViewModel
 {
@@ -9,22 +10,25 @@ namespace WpfApp.ViewModel
         public MainViewModel()
         {
             Modules = new List<Module>{
-            new Module{Name = "文档" },
-            new Module{Name = "音乐" },
-            new Module{Name = "视频" },
-            new Module{Name = "照片" },
-            new Module{Name = "收藏" }
+            new Module{Title = "文档", Name = "Document" },
+            new Module{Title = "音乐", Name = "Music" },
+            new Module{Title = "视频", Name = "Video" },
+            new Module{Title = "照片", Name = "Photo" },
+            new Module{Title = "收藏", Name = "Favorite" }
             };
 
             OpenCommand = new RelayCommand<string>(t => OpenPage(t));
+
+            // 配置主页
+            CurrentPage = (UserControl)CreatUsercontrol("Home");
         }
 
 
-        private object page;
-        public object Page 
+        private object currentPage;
+        public object CurrentPage 
         {
-            get { return page; }
-            set { page = value; RaisePropertyChanged(); } 
+            get { return currentPage; }
+            set { currentPage = value; RaisePropertyChanged(); } 
         }
 
         /// <summary>
@@ -33,40 +37,18 @@ namespace WpfApp.ViewModel
         public List<Module> Modules { get; set; }
 
 
-
-        private string name;
-
-        public string Name
-        {
-            get { return name; }
-            set { name = value; RaisePropertyChanged(); }
-        }
-
         public RelayCommand<string> OpenCommand { get; set; }
 
         public void OpenPage(string name)
         {
-            //this.Name = name;
-            switch (name)
-            {
-                case "文档":
-                    Page = new Document();
-                    break;
-                case "音乐":
-                    Page = new Music();
-                    break;
-                case "视频":
-                    Page = new Video();
-                    break;
-                case "照片":
-                    Page = new Photo();
-                    break;
-                case "收藏":
-                    Page = new Favorite();
-                    break;
+            CurrentPage = (UserControl)CreatUsercontrol(name);
+        }
 
-            }
-
+        public object CreatUsercontrol(string className)
+        {
+            var nameSpacePath = $"WpfApp.Views.{className}";
+            var type = Type.GetType(nameSpacePath);
+            return Activator.CreateInstance(type);
         }
     }
 }

@@ -27,22 +27,14 @@
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <Button Margin="5" Height="20" Width="70" BorderBrush="WhiteSmoke"
-                        CommandParameter="{Binding Name}" Content="{Binding Name}"
+                        CommandParameter="{Binding Name}" Content="{Binding Title}"
                             Command="{ Binding RelativeSource={RelativeSource AncestorType=local:MainWindow },Path=DataContext.OpenCommand }" />
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
         
         <!-- 定义内容区 -->
-        <ContentControl Grid.Column="1" Content="{Binding Page}" />
+        <ContentControl Grid.Column="1" Content="{Binding CurrentPage}" />
         
-        <!--<StackPanel Grid.Column="1">
-
-            <TextBlock Text="{Binding Name}" Height="50" Background="CadetBlue"/>
-
-            <Button x:Name="BtnGetData" Content="获取数据" Click="BtnGetData_ClickAsync"/>
-            <Label Content="数据展示：" />
-            <TextBox x:Name="TbxDisplayData" />
-        </StackPanel>-->
     </Grid>
 </Window>
