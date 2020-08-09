@@ -20,7 +20,7 @@ namespace WpfApp.ViewModel
             OpenCommand = new RelayCommand<string>(t => OpenPage(t));
 
             // 配置主页
-            CurrentPage = (UserControl)CreatUsercontrol("Home");
+            CurrentPage = (UserControl)CreateUsercontrol("Home");
         }
 
 
@@ -41,10 +41,10 @@ namespace WpfApp.ViewModel
 
         public void OpenPage(string name)
         {
-            CurrentPage = (UserControl)CreatUsercontrol(name);
+            CurrentPage = (UserControl)CreateUsercontrol(name);
         }
 
-        public object CreatUsercontrol(string className)
+        public object CreateUsercontrol(string className)
         {
             var nameSpacePath = $"WpfApp.Views.{className}";
             var type = Type.GetType(nameSpacePath);
