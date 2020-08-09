@@ -5,36 +5,58 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800"
+        
+        WindowStyle="None"
+        AllowsTransparency="True"
+        ResizeMode="CanResizeWithGrip"
+        
+        >
     <Grid>
-
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200" />
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
-
-        <!-- 左侧列表，并绑定到对象上 -->
-        <ItemsControl ItemsSource="{Binding Modules}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition />
+            <RowDefinition Height="30" />
+        </Grid.RowDefinitions>
+        <Grid x:Name="Gr_Top" Background="Gray">
+            <Border Background="Transparent" Height="20" VerticalAlignment="Top" MouseMove="Border_MouseMove" />
+        </Grid>
+        
+        <Grid x:Name="Gr_Body" Grid.Row="1" >
             
-            <!-- 配置模板为stackpanel -->
-            <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <StackPanel Background="LightGray" />
-                </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
-            
-            <!-- 绑定显示 -->
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <Button Margin="5" Height="20" Width="70" BorderBrush="WhiteSmoke"
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <!-- 左侧列表，并绑定到对象上 -->
+            <ItemsControl ItemsSource="{Binding Modules}">
+
+                <!-- 配置模板为stackpanel -->
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Background="LightGray" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <!-- 绑定显示 -->
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Button Margin="5" Height="20" Width="70" BorderBrush="WhiteSmoke"
                         CommandParameter="{Binding Name}" Content="{Binding Title}"
                             Command="{ Binding RelativeSource={RelativeSource AncestorType=local:MainWindow },Path=DataContext.OpenCommand }" />
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+            <!-- 定义内容区 -->
+            <ContentControl Grid.Column="1" Content="{Binding CurrentPage}" />
+        </Grid>
+
+        <Grid x:Name="Gr_Bottom" Grid.Row="2" Background="Gray">
+            
+        </Grid>
         
-        <!-- 定义内容区 -->
-        <ContentControl Grid.Column="1" Content="{Binding CurrentPage}" />
         
     </Grid>
 </Window>
