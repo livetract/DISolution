@@ -18,8 +18,16 @@
             <RowDefinition />
             <RowDefinition Height="30" />
         </Grid.RowDefinitions>
+        
+        <!--顶部标题栏设置-->
         <Grid x:Name="Gr_Top" Background="Gray">
             <Border Background="Transparent" Height="20" VerticalAlignment="Top" MouseMove="Border_MouseMove" />
+            <!--按钮的设置-->
+            <UniformGrid Columns="3" Width="90" HorizontalAlignment="Right" VerticalAlignment="Center">
+                <TextBlock Text="_" />
+                <TextBlock Text="口" />
+                <TextBlock Text="X" />
+            </UniformGrid>
         </Grid>
         
         <Grid x:Name="Gr_Body" Grid.Row="1" >
@@ -53,8 +61,17 @@
             <ContentControl Grid.Column="1" Content="{Binding CurrentPage}" />
         </Grid>
 
+        <!--底部状态栏设置-->
         <Grid x:Name="Gr_Bottom" Grid.Row="2" Background="Gray">
             
+            <!--可移动标记设置-->
+            <Thumb Cursor="SizeNESW" DragDelta="Thumb_DragDelta" Width="20" Height="20" HorizontalAlignment="Right" VerticalAlignment="Bottom" >
+                <Thumb.Template>
+                    <ControlTemplate TargetType="Thumb">
+                        <Border Background="Red" />
+                    </ControlTemplate>
+                </Thumb.Template>
+            </Thumb>
         </Grid>
         
         

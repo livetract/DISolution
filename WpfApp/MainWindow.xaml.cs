@@ -25,5 +25,12 @@ namespace WpfApp
                 DragMove();
             }
         }
+
+        private void Thumb_DragDelta(object sender, System.Windows.Controls.Primitives.DragDeltaEventArgs e)
+        {
+            // 根据拖动的增量改变
+            Width += e.HorizontalChange;
+            Height += e.VerticalChange;
+        }
     }
 }
