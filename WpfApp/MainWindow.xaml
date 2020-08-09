@@ -24,9 +24,9 @@
             <Border Background="Transparent" Height="20" VerticalAlignment="Top" MouseMove="Border_MouseMove" />
             <!--按钮的设置-->
             <UniformGrid Columns="3" Width="90" HorizontalAlignment="Right" VerticalAlignment="Center">
-                <TextBlock Text="_" />
-                <TextBlock Text="口" />
-                <TextBlock Text="X" />
+                <Button Content="-" Tag="ToBar" Click="ClickBtnConsole" />
+                <Button Content="口" Tag="Max" Click="ClickBtnConsole"/>
+                <Button Content="X" Tag="Close" Click="ClickBtnConsole"/>
             </UniformGrid>
         </Grid>
         
