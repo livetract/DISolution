@@ -4,6 +4,8 @@
              xmlns:local="clr-namespace:WpfApp"
              >
     <Application.Resources>
-         
+
+        <ResourceDictionary Source="./WindowStyleDict.xaml"/>
+
     </Application.Resources>
 </Application>

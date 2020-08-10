@@ -48,5 +48,8 @@
     <Page Update="Views\Video.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="WindowStyleDict.xaml">
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
 </Project>
