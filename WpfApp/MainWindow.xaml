@@ -65,7 +65,7 @@
             <Thumb Cursor="SizeNESW" DragDelta="Thumb_DragDelta" Width="20" Height="20" HorizontalAlignment="Right" VerticalAlignment="Bottom" >
                 <Thumb.Template>
                     <ControlTemplate TargetType="Thumb">
-                        <Border Background="Red" />
+                        <Border Background="Transparent" />
                     </ControlTemplate>
                 </Thumb.Template>
             </Thumb>
