@@ -8,12 +8,12 @@ namespace WpfApp.ViewModel
     {
         public MainViewModel()
         {
-            Modules = new List<Module>{
-            new Module{Title = "文档", Name = "Document" },
-            new Module{Title = "音乐", Name = "Music" },
-            new Module{Title = "视频", Name = "Video" },
-            new Module{Title = "照片", Name = "Photo" },
-            new Module{Title = "收藏", Name = "Favorite" }
+            MenuItems = new List<MenuModule>{
+            new MenuModule{Title = "文档", Name = "Document" },
+            new MenuModule{Title = "音乐", Name = "Music" },
+            new MenuModule{Title = "视频", Name = "Video" },
+            new MenuModule{Title = "照片", Name = "Photo" },
+            new MenuModule{Title = "收藏", Name = "Favorite" }
             };
 
             OpenCommand = new RelayCommand<string>(t => OpenPage(t));
@@ -34,7 +34,7 @@ namespace WpfApp.ViewModel
         /// <summary>
         /// 配置功能
         /// </summary>
-        public List<Module> Modules { get; set; }
+        public List<MenuModule> MenuItems { get; set; }
 
 
         public RelayCommand<string> OpenCommand { get; set; }

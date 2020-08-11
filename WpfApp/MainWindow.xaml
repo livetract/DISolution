@@ -35,7 +35,7 @@
             </Grid.ColumnDefinitions>
 
             <!-- 左侧列表，并绑定到对象上 -->
-            <ItemsControl ItemsSource="{Binding Modules}">
+            <ItemsControl ItemsSource="{Binding MenuItems}">
 
                 <!-- 配置模板为stackpanel -->
                 <ItemsControl.ItemsPanel>
