@@ -6,7 +6,6 @@ namespace WpfApp.ViewModel
 {
     public class MainViewModel:BaseViewModel
     {
-
         public MainViewModel()
         {
             Modules = new List<Module>{
@@ -25,6 +24,7 @@ namespace WpfApp.ViewModel
 
 
         private object currentPage;
+
         public object CurrentPage 
         {
             get { return currentPage; }
