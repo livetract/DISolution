@@ -5,7 +5,7 @@
              >
     <Application.Resources>
 
-        <ResourceDictionary Source="./WindowStyleDict.xaml"/>
+        <ResourceDictionary Source="./DictionaryResources/WindowStyleDict.xaml"/>
 
     </Application.Resources>
 </Application>
