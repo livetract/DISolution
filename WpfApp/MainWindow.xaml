@@ -9,6 +9,18 @@
         
         Style="{StaticResource ResourceKey=WindowStyle}"
         >
+
+    <Window.Resources>
+        <Style x:Key="BaseStyle" TargetType="Button">
+            <!--触发器-->
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="LightGreen"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30" />
@@ -48,8 +60,9 @@
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <Button Margin="5" Height="20" Width="70" BorderBrush="WhiteSmoke"
-                        CommandParameter="{Binding Name}" Content="{Binding Title}"
-                            Command="{ Binding RelativeSource={RelativeSource AncestorType=local:MainWindow },Path=DataContext.OpenCommand }" />
+                                CommandParameter="{Binding Name}" Content="{Binding Title}"
+                                Command="{ Binding RelativeSource={RelativeSource AncestorType=local:MainWindow },Path=DataContext.OpenCommand }"
+                                Style="{StaticResource BaseStyle}"/>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
