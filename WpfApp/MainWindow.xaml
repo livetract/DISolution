@@ -12,10 +12,24 @@
 
     <Window.Resources>
         <Style x:Key="BaseStyle" TargetType="Button">
+            
+            <!--基本样式-->
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Height" Value="20" />
+            <Setter Property="Width" Value="70"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+
             <!--触发器-->
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Background" Value="LightGreen"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="False">
+                    <Setter Property="Background" Value="White" />
+                </Trigger>
+
+                <Trigger Property="IsFocused" Value="True">
+                    <Setter Property="Background" Value="Blue"/>
                 </Trigger>
             </Style.Triggers>
         </Style>
@@ -59,8 +73,7 @@
                 <!-- 绑定显示 -->
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Button Margin="5" Height="20" Width="70" BorderBrush="WhiteSmoke"
-                                CommandParameter="{Binding Name}" Content="{Binding Title}"
+                        <Button CommandParameter="{Binding Name}" Content="{Binding Title}"
                                 Command="{ Binding RelativeSource={RelativeSource AncestorType=local:MainWindow },Path=DataContext.OpenCommand }"
                                 Style="{StaticResource BaseStyle}"/>
                     </DataTemplate>
