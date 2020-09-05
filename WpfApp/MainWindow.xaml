@@ -19,17 +19,29 @@
             <Setter Property="Width" Value="70"/>
             <Setter Property="BorderBrush" Value="Black"/>
 
-            <!--触发器-->
+            <!--修改按钮背景颜色-->
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <!--样式保持原有的-->
+                        <Border x:Name="border" Background="{TemplateBinding Background}">
+                            <ContentPresenter Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" />
+                        </Border>
+                        
+                        <!--设置变换颜色-->
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="LightGreen" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <!--触发器  触发器要放在属性后面-->
             <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="LightGreen"/>
-                </Trigger>
                 <Trigger Property="IsMouseOver" Value="False">
                     <Setter Property="Background" Value="White" />
-                </Trigger>
-
-                <Trigger Property="IsFocused" Value="True">
-                    <Setter Property="Background" Value="Blue"/>
                 </Trigger>
             </Style.Triggers>
         </Style>
